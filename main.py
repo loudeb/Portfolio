@@ -40,7 +40,7 @@ class Portfolio():
                 print("Wrong tikr")
 
 class Stock():
-    def __init__(self, tikr, quant, purchase_price=0):
+    def __init__(self, tikr):
         self.tikr = tikr
         self.quant = quant
         self.purchase_price = purchase_price
@@ -54,6 +54,12 @@ class Stock():
         info = self.data.get_info()
         print(info['currentPrice'])
 
+class Portfolio_Stock(Stock):
+    def __init__(self, tikr, quant, purchase_price=0):
+        self.tikr = tikr
+        self.quant = quant
+        self.purchase_price = purchase_price
+
 def load_portfolio(name):
     with open('portfolio_' + name, "rb") as pickle_in:
         portfolio = pickle.load(pickle_in)
@@ -64,7 +70,7 @@ mxct.get_price()
 
 
 menuon = True
-while menuon:
+while menuon: #todo make this a true menu that can access the portfolios and methods
     print("")
     answer = input("What would you like to do?/n")
     if answer == "1":
